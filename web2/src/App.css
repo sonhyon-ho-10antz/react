@@ -1,0 +1,16 @@
+.App{
+  display: flex;
+  height: 100vh;
+}
+
+.menu_bar{
+  display: flex;
+  flex-direction: column;
+  min-width: 110px;
+  background-color: wheat;
+
+  .nav-link{
+    color: black;
+  }
+  
+}

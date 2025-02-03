@@ -1,0 +1,75 @@
+h1{
+  margin: 5px 0;
+  text-align: center;
+}
+
+
+.animation_box{
+  background-color: #FFFFFF;
+  margin-left: 5px;
+  border-radius: 1rem;
+  box-shadow: 0 0 1rem rgba(0, 0, 0, .1);
+  display: flex;
+  justify-content: center;
+  align-items: center; 
+  width: 50vh;
+  height: 50vh;
+}
+
+.back_egg{
+  width: 180px;
+  height: 250px;
+  position: relative;
+  z-index: 1;
+
+  .back_egg_top{
+    background-image: url('../Animation01/img/top_egg.png');
+    width: 180px;
+    height: 145px;
+    position: absolute;
+    top: 25px;
+  }
+
+  .back_egg_bottom{
+  background-image: url('../Animation01/img/botton_egg.png');
+  width: 180px;
+  height: 142px;
+  position: absolute;
+  top: 115px;
+  }
+}
+
+.front_egg{
+  background-image: url('../Animation01/img/front_egg.png');
+  width: 180px;
+  height: 250px;
+  position: absolute;
+  z-index: 2;
+  transition: clip-path 3s;
+}
+
+.front_egg.break {
+  animation: fadeOutLeft 3s forwards;
+}
+
+@keyframes fadeOutLeft {
+  0% {
+    clip-path: inset(0 0 0 0);
+  }
+  100% {
+    clip-path: inset(0 100% 0 0);
+  }
+}
+
+.back_egg_top.moveUp {
+  animation: moveUp 1s forwards;
+}
+
+@keyframes moveUp {
+  0% {
+    transform: translateY(0);
+  }
+  100% {
+    transform: translateY(-30%);
+  }
+}

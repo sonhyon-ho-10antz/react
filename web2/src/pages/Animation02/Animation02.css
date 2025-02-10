@@ -3,7 +3,6 @@ h1{
   text-align: center;
 }
 
-
 .animation_box{
   background-color: #FFFFFF;
   margin-left: 5px;
@@ -14,4 +13,44 @@ h1{
   align-items: center; 
   width: 50vh;
   height: 50vh;
+}
+
+.card{
+  display: inline-block;
+  color: white;
+}
+
+.card {
+  display: inline-grid;
+  color: white;
+  transition: transform 0.3s;
+  transform: perspective(800px) rotateY(0deg);
+  transform-style: preserve-3d;
+  border: 2px solid transparent;
+}
+
+.card > * {
+  grid-area: 1 / 1 / 1 / 1;
+  width: 183px;
+  height: 275px;
+  border-radius: 8px;
+  backface-visibility: hidden;
+}
+
+.card:hover {
+  border-color: blue; 
+  border-radius: 0.5rem;
+}
+
+.card.flipped {
+  transform: perspective(800px) rotateY(180deg);
+}
+
+.card-front {
+  background-image: url('../Animation02/img/front.png');
+}
+
+.card-back {
+  background-image: url('../Animation02/img/back.jpg');
+  transform: rotateY(180deg);
 }

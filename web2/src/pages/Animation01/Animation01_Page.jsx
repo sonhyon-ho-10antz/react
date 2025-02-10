@@ -5,7 +5,7 @@ export default function Animation01_Page() {
   const [isBroken, setIsBroken] = useState(false);
   const [isMoving, setIsMoving] = useState(false);
 
-  const animateEggClick = () => {
+  const animateClick = () => {
     //　アニメ１実行
     setIsBroken(true);
     setTimeout(() => {
@@ -23,7 +23,7 @@ export default function Animation01_Page() {
     <div className="page">
       <h1>Animation01</h1>
       <div className="animation_box">
-        <div className={`front_egg ${isBroken ? "break" : ""}`} onClick={animateEggClick}></div>
+        <div className={`front_egg ${isBroken ? "break" : ""}`} onClick={animateClick}></div>
         <div className="back_egg">
           <div className={`back_egg_top ${isMoving ? "moveUp" : ""}`}></div>
           <div className="back_egg_bottom"></div>

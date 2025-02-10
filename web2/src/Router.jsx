@@ -1,9 +1,15 @@
 import React from "react";
 import { BrowserRouter, Routes, Route, NavLink } from "react-router-dom";
-import Animation01_Page from "./pages/Animation01/Animation01_Page";
-import Animation02_Page from "./pages/Animation02/Animation02_Page";
-
 import HomePage from "./pages/Home/HomePage";
+
+const animationPages = require.context('./pages', true, /Animation\d+_Page\.jsx$/);
+
+const pages = animationPages.keys().map((path) => {
+  const pageLabel = path.split('/')[2].replace('_Page.jsx', ''); 
+  const PageComponent = animationPages(path).default;
+  
+  return { path: `/${pageLabel}`, component: PageComponent, label: pageLabel };
+});
 
 export default function Router() {
   return (
@@ -12,18 +18,24 @@ export default function Router() {
         <NavLink className={({ isActive }) => "nav-link" + (isActive ? " click" : "")} to='/'>
           Home
         </NavLink>
-        <NavLink className={({ isActive }) => "nav-link" + (isActive ? " click" : "")} to='/Animation01'>
-        Animation01
-        </NavLink>
-        <NavLink className={({ isActive }) => "nav-link" + (isActive ? " click" : "")} to='/Animation02'>
-        Animation02
-        </NavLink>
+
+        {pages.map((page) => (
+          <NavLink
+            key={page.label}
+            className={({ isActive }) => "nav-link" + (isActive ? " click" : "")}
+            to={page.path}
+          >
+            {page.label}
+          </NavLink>
+        ))}
       </nav>
 
       <Routes>
         <Route exact path='/' element={<HomePage />} />
-        <Route path='/Animation01' element={<Animation01_Page />} />
-        <Route path='/Animation02' element={<Animation02_Page />} />
+
+        {pages.map((page) => (
+          <Route key={page.label} path={page.path} element={<page.component />} />
+        ))}
       </Routes>
     </BrowserRouter>
   );

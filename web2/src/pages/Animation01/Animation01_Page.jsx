@@ -33,9 +33,9 @@ export default function Animation01_Page() {
     <div className="page">
       <h1>Animation01</h1>
       <div className="animation_box">
-        <div className={`egg ${isShake ? "shake" : ""}`}>
+        <div className={`egg ${isShake ? "shake-1" : ""}`}>
           <div className={`front_egg ${isBroken ? "break" : ""}`} onClick={animateClick}></div>
-          <div className={`back_egg ${isShake ? "shake" : ""}`}>
+          <div className={`back_egg ${isShake ? "shake-1" : ""}`}>
             <div className={`back_egg_top ${isMoving ? "moveUp" : ""}`}></div>
             <div className="back_egg_bottom"></div>
           </div>
